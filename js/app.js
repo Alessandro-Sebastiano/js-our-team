@@ -41,4 +41,14 @@ const teamMembers = [
 ];
 
 
+
+
 console.log(teamMembers);
+
+
+for (let value of teamMembers) {
+    console.log(value);
+    for (let property in value) {
+        console.log(property + ': ' + value[property]);
+    }
+}
