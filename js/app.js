@@ -1,5 +1,8 @@
 'use strict';
 
+const cardBox = document.getElementById('box');
+
+
 const teamMembers = [
 
     {
@@ -35,20 +38,30 @@ const teamMembers = [
     {
         name: 'Barbara Ramos',
         role: 'Graphic Designer',
-        profileImg: 'barbara-ramos-grapich-designer.jpg'
+        profileImg: 'barbara-ramos-graphic-designer.jpg'
     }
 
 ];
 
 
-
-
-console.log(teamMembers);
-
-
 for (let value of teamMembers) {
-    console.log(value);
-    for (let property in value) {
-        console.log(property + ': ' + value[property]);
-    }
+
+    const card = document.createElement('div');
+
+    card.innerHTML = `
+    <div class="card" style="width: 18rem;">
+    <img src="./img/${value.profileImg}" class="card-img-top" alt="...">
+    <div class="card-body text-center">
+      <h4 id="card-name">${value.name}</h4>
+      <span>${value.role}</span>
+    </div>
+    </div>
+    `;
+
+    cardBox.appendChild(card);
+
+    card.classList.add('my-3');
+
 }
+
+
