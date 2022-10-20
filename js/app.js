@@ -2,6 +2,9 @@
 
 const cardBox = document.getElementById('box');
 
+const NewUserName = document.getElementById('new-user-name');
+const NewUserRole = document.getElementById('new-user-role');
+const NewUserBtn = document.getElementById('new-user-button');
 
 const teamMembers = [
 
@@ -44,11 +47,37 @@ const teamMembers = [
 ];
 
 
-for (let value of teamMembers) {
 
-    const card = document.createElement('div');
+function addCards() {
 
-    card.innerHTML = `
+    let newUser = {
+
+        name: NewUserName.value,
+        role: NewUserRole.value,
+        profileImg: 'wayne-barnett-founder-ceo.jpg'
+    }
+
+
+    teamMembers.push(newUser);
+    generateCards();
+    console.log(teamMembers);
+
+    NewUserName.value = '';
+    NewUserRole.value = '';
+
+}
+
+
+
+function generateCards() {
+
+    cardBox.innerHTML = '';
+
+    for (let value of teamMembers) {
+
+        const card = document.createElement('div');
+
+        card.innerHTML = `
     <div class="card" style="width: 18rem;">
     <img src="./img/${value.profileImg}" class="card-img-top" alt="...">
     <div class="card-body text-center">
@@ -58,10 +87,16 @@ for (let value of teamMembers) {
     </div>
     `;
 
-    cardBox.appendChild(card);
+        cardBox.appendChild(card);
 
-    card.classList.add('my-3');
+        card.classList.add('my-card');
+
+    }
+
 
 }
 
+NewUserBtn.addEventListener('click', addCards);
 
+
+generateCards();
