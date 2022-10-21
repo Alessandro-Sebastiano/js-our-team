@@ -50,17 +50,18 @@ const teamMembers = [
 
 function addCards() {
 
-    let newUser = {
 
+
+    let newUser = {
         name: NewUserName.value,
         role: NewUserRole.value,
         profileImg: 'wayne-barnett-founder-ceo.jpg'
+    };
+
+    if (newUser.name != '' && newUser.role != '') {
+        teamMembers.push(newUser);
+        generateCards();
     }
-
-
-    teamMembers.push(newUser);
-    generateCards();
-    console.log(teamMembers);
 
     NewUserName.value = '';
     NewUserRole.value = '';
@@ -78,14 +79,14 @@ function generateCards() {
         const card = document.createElement('div');
 
         card.innerHTML = `
-    <div class="card" style="width: 18rem;">
-    <img src="./img/${value.profileImg}" class="card-img-top" alt="...">
-    <div class="card-body text-center">
-      <h4 id="card-name">${value.name}</h4>
-      <span>${value.role}</span>
-    </div>
-    </div>
-    `;
+        <div class="card" style="width: 18rem;">
+        <img src="./img/${value.profileImg}" class="card-img-top" alt="${value.name}">
+        <div class="card-body text-center">
+        <h4 id="card-name">${value.name}</h4>
+        <span>${value.role}</span>
+        </div>
+        </div>
+        `;
 
         cardBox.appendChild(card);
 
